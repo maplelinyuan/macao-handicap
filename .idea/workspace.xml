@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08eaf3e4-9869-4495-bed6-3cd6cec6217d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/aoke/spiders/aoke_spider_macaoBIfa_complexy.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aoke/pipelines.py" afterPath="$PROJECT_DIR$/aoke/pipelines.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aoke/spiders/aoke_spider.py" afterPath="$PROJECT_DIR$/aoke/spiders/aoke_spider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,18 +16,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aoke/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="34" column="47" lean-forward="false" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+            <state relative-caret-position="-266">
+              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
               <folding>
                 <element signature="e#193#215#0" expanded="true" />
-                <marker date="1513337280387" expanded="true" signature="1095:1634" ph="CREATE TABLE... IF" />
-                <marker date="1513337280387" expanded="true" signature="1095:1731" ph="CREATE TABLE... IF" />
-                <marker date="1513337280387" expanded="true" signature="1840:1879" ph="SELECT match... " />
-                <marker date="1513337280387" expanded="true" signature="1840:1914" ph="SELECT match... " />
-                <marker date="1513337280387" expanded="true" signature="2951:2961" ph="UPDATE &quot;+tab... " />
+                <marker date="1513347715340" expanded="true" signature="1090:1629" ph="CREATE TABLE... IF" />
+                <marker date="1513347715340" expanded="true" signature="1090:1726" ph="CREATE TABLE... IF" />
+                <marker date="1513347715340" expanded="true" signature="1835:1874" ph="SELECT match... " />
+                <marker date="1513347715340" expanded="true" signature="1835:1909" ph="SELECT match... " />
+                <marker date="1513347715340" expanded="true" signature="2946:2956" ph="UPDATE &quot;+tab... " />
               </folding>
             </state>
           </provider>
@@ -38,7 +36,7 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3477">
+            <state relative-caret-position="-570">
               <caret line="183" column="42" lean-forward="false" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
@@ -47,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aoke_spider.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aoke_spider.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aoke/spiders/aoke_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="123">
+              <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="9" />
               <folding>
                 <element signature="e#36#49#0" expanded="true" />
               </folding>
@@ -70,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>== 0</find>
       <find>strftime</find>
       <find>analysingData</find>
       <find>size(</find>
@@ -97,9 +94,10 @@
       <find>league_name</find>
       <find>updateData</find>
       <find>macaoB</find>
-      <find>aoke</find>
-      <find>macao_cold_match</find>
       <find>select_league_list</find>
+      <find>macao_cold_match</find>
+      <find>aoke</find>
+      <find>info_days</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -124,8 +122,8 @@
         <option value="$PROJECT_DIR$/aoke/settings.py" />
         <option value="$PROJECT_DIR$/timer.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/aoke/spiders/aoke_spider.py" />
         <option value="$PROJECT_DIR$/aoke/pipelines.py" />
+        <option value="$PROJECT_DIR$/aoke/spiders/aoke_spider.py" />
       </list>
     </option>
   </component>
@@ -403,6 +401,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1762481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -412,7 +411,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25409836" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25409836" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -473,11 +472,11 @@
           <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding>
             <element signature="e#193#215#0" expanded="true" />
-            <marker date="1513337280387" expanded="true" signature="1095:1634" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1095:1731" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1840:1879" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="1840:1914" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="2951:2961" ph="UPDATE &quot;+tab... " />
+            <marker date="1513347715340" expanded="true" signature="1090:1629" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1090:1726" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1835:1874" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="1835:1909" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="2946:2956" ph="UPDATE &quot;+tab... " />
           </folding>
         </state>
       </provider>
@@ -516,11 +515,11 @@
           <caret line="117" column="56" lean-forward="true" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
           <folding>
             <element signature="e#193#215#0" expanded="true" />
-            <marker date="1513337280387" expanded="true" signature="1095:1634" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1095:1731" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1840:1879" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="1840:1914" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="2951:2961" ph="UPDATE &quot;+tab... " />
+            <marker date="1513347715340" expanded="true" signature="1090:1629" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1090:1726" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1835:1874" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="1835:1909" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="2946:2956" ph="UPDATE &quot;+tab... " />
           </folding>
         </state>
       </provider>
@@ -631,7 +630,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3477">
+        <state relative-caret-position="-570">
           <caret line="183" column="42" lean-forward="false" selection-start-line="183" selection-start-column="42" selection-end-line="183" selection-end-column="42" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
@@ -639,27 +638,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aoke/spiders/aoke_spider.py">
+    <entry file="file://$PROJECT_DIR$/aoke/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="-266">
+          <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
           <folding>
-            <element signature="e#36#49#0" expanded="true" />
+            <element signature="e#193#215#0" expanded="true" />
+            <marker date="1513347715340" expanded="true" signature="1090:1629" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1090:1726" ph="CREATE TABLE... IF" />
+            <marker date="1513347715340" expanded="true" signature="1835:1874" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="1835:1909" ph="SELECT match... " />
+            <marker date="1513347715340" expanded="true" signature="2946:2956" ph="UPDATE &quot;+tab... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aoke/pipelines.py">
+    <entry file="file://$PROJECT_DIR$/aoke/spiders/aoke_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="34" column="47" lean-forward="false" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        <state relative-caret-position="123">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="9" />
           <folding>
-            <element signature="e#193#215#0" expanded="true" />
-            <marker date="1513337280387" expanded="true" signature="1095:1634" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1095:1731" ph="CREATE TABLE... IF" />
-            <marker date="1513337280387" expanded="true" signature="1840:1879" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="1840:1914" ph="SELECT match... " />
-            <marker date="1513337280387" expanded="true" signature="2951:2961" ph="UPDATE &quot;+tab... " />
+            <element signature="e#36#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
