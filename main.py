@@ -185,7 +185,7 @@ class Ui_MainWindow(object):
         # 创建QsqlQuery对象，用于执行sql语句
         query = QtSql.QSqlQuery()
         query.exec('show tables')
-        query.last()
+        query.first()
         # 查询出刚才更新的表
         table_name = query.value(0)
         query.exec('SELECT * FROM '+table_name)
