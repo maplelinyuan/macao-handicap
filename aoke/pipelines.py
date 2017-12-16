@@ -23,7 +23,7 @@ class AokePipeline(object):
             'host' : 'localhost',
             'user' : 'root',
             'password' : '1994',
-            'db' : 'macao_handicap_analysis',
+            'db' : 'macao_handicap_simplelificate_analysis',
             'charset' : 'utf8mb4',
             'cursorclass' : pymysql.cursors.DictCursor
         }
@@ -32,7 +32,7 @@ class AokePipeline(object):
         try:
             with connection.cursor() as cursor:
                 # 设置当前表名
-                tableName = 'aoke_handicap'+nowatime
+                tableName = 'aoke_handicap_simplelificate'+nowatime
                 # 建表
                 build_table = (
                     "CREATE TABLE IF NOT EXISTS "' %s '""

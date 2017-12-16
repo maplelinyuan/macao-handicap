@@ -10,6 +10,7 @@ import json
 # 要查询赔率的公司
 info_days = 1  # 收集多少天的信息  1表示当天分析
 # 对于以下参数的统计：
+# 只有1
 # changePrice = 0.08  # 变盘增减水位
 # pass_price = 0.15 # 水位下降通过线，通过则支持《
 # 712 天 84 523 3046 23612 select_league_list = ['西甲','德甲','苏超','友谊赛','澳超','荷甲','荷乙','美联']
@@ -19,16 +20,26 @@ info_days = 1  # 收集多少天的信息  1表示当天分析
 # 1800 天 331 6923 51072 全部 盈利率:0.048 命中率:52.4%
 # 凯利公式计算投注比例(以赔率为1.9)：0.273
 
+# 存在条件2,3,4,5时
+# special_price ＞2.25 改为 >= 2.15 ，<1.7改为 <=1.72
+# 1800天 154.5 1682 39535 全部 盈利率:0.092 命中率:54.6%
+
 bookmakerID = 84
+# 精简版
 # 50 pinnacle, 250 皇冠 84 澳门 19 必发交易所
 # 算法思想
 # 1.遍历澳门变赔找出变盘后水位大幅下降的方向，若一场比赛有多个方向，则一致才表示支持，否则放弃    √
+# 2 看好方向要与初盘、终盘让盘方向一致，平/半为基准 √
+# 3 排除没变盘一次降水》0.11 后 <1.81 的赔率 的方向 √
+# 4 排除初盘平半主大于2.02 赔率，客大于2.05的方向 √
+# 5 排除连降两个盘口的方向 √
 # 可能的优化方向
-# 1 看好方向要与初盘让盘方向一致，平/半为基准
-# 2 排除没变盘一次降水》0.15的方向
+# 1
+
 
 # 选取的联赛列表
 select_league_list = ['西甲','德甲','苏超','友谊赛','澳超','荷甲','荷乙','美联']
+unselect_league_list = ['意甲']
 # 算法判断参数
 changePrice = 0.08  # 变盘增减水位
 pass_price = 0.15 # 水位下降通过线，通过则支持《
@@ -197,6 +208,8 @@ class SoccerSpider(scrapy.Spider):
                              tr.xpath('td')[2].xpath('text()').extract()[0]
                 # if not league_name in select_league_list:
                 #     continue
+                if league_name in unselect_league_list:
+                    continue
 
                 # 主进球
                 host_goal_text = tr.xpath('td[@class="show_score"]/a/b')[0].xpath('text()').extract()
@@ -303,6 +316,13 @@ class SoccerSpider(scrapy.Spider):
         begin_host = 0
         begin_guest = 0
 
+        # 记录连续降水
+        successive_drop = 0
+
+        # deny
+        host_deny = False
+        guest_deny = False
+
         tr_len = len(response.xpath('//tbody')[0].xpath('tr[@class=""]'))
         special_price = False   # 若出现特殊赔率就跳过该场
         count = 0
@@ -310,8 +330,9 @@ class SoccerSpider(scrapy.Spider):
             current_handicap = tr.xpath('td')[3].xpath('text()').extract()[0]
             current_host_price = float(self.find_odds(tr, 'host'))
             current_guest_price = float(self.find_odds(tr, 'guest'))
+            pre_time = tr.xpath('td')[1].xpath('text()').extract()[0]    # 赛前时间
             # 有时候澳门赔率会出现特殊情况，特别大、特别小的情况要排除
-            if current_host_price > 2.15 or current_guest_price > 2.15 or current_host_price < 1.7 or current_guest_price < 1.7:
+            if  current_host_price >= 2.15 or current_guest_price >= 2.15 or current_host_price <= 1.72 or current_guest_price <= 1.72:
                 special_price = True
                 break
             # 终盘
@@ -319,26 +340,63 @@ class SoccerSpider(scrapy.Spider):
                 ultimate_handicap = current_handicap
                 ultimate_host = current_host_price
                 ultimate_guest = current_guest_price
+                if ultimate_handicap == '半球' and ultimate_host > 2.11:
+                    guest_deny = True
+                if ultimate_handicap == '半球' and ultimate_guest > 2.11:
+                    host_deny = True
             # 初盘
             if count == tr_len - 1:
                 begin_handicap = current_handicap
                 begin_host = current_host_price
                 begin_guest = current_guest_price
+                if calculate_handicap(begin_handicap, ultimate_handicap) >= 0.5:
+                    guest_deny = True
+                elif calculate_handicap(begin_handicap, ultimate_handicap) <= -0.5:
+                    host_deny = True
+            # 赛前大于65个小时
+            if self.preTime2num(pre_time) > 3900:
+                if current_handicap == '平手/半球' and current_host_price > 2.01:
+                    host_deny = True
+                if current_handicap == '平手/半球' and current_guest_price > 2.05:
+                    guest_deny = True
+                if current_handicap == '半球' and current_host_price > 2.09:
+                    host_deny = True
+
             if pre_handicap != '':
-                if current_handicap != pre_handicap:
-                    # 因为是倒向遍历，所以pre - current
-                    handicap_differ = calculate_handicap(current_handicap,pre_handicap)
-                    normal_host_price = current_host_price + (handicap_differ / 0.25) * changePrice  # 按照降盘水位应该达到的主价格值
-                    normal_guest_price = current_guest_price + (handicap_differ / 0.25) * -changePrice  # 按照降盘水位应该达到的客价格值
-                    # 临时支持方向
-                    temp_support_direction = 0
-                    if (pre_host_price - normal_host_price) <= -pass_price:
-                        temp_support_direction = 1
-                    elif (pre_guest_price - normal_guest_price) <= -pass_price:
-                        temp_support_direction = -1
-                    # 只保存倾向性的support，不保存0
-                    if temp_support_direction != 0:
-                        handicap_change_support_list.append(temp_support_direction)
+                # 盘口不等判断变水
+                # 但是赛前时间不到90个小时才进行判断
+                if self.preTime2num(pre_time) < 5400:
+                    if current_handicap != pre_handicap:
+                        # 因为是倒向遍历，所以pre - current
+                        handicap_differ = calculate_handicap(current_handicap,pre_handicap)
+                        normal_host_price = current_host_price + (handicap_differ / 0.25) * changePrice  # 按照降盘水位应该达到的主价格值
+                        normal_guest_price = current_guest_price + (handicap_differ / 0.25) * -changePrice  # 按照降盘水位应该达到的客价格值
+                        # 临时支持方向
+                        temp_support_direction = 0
+                        if (pre_host_price - normal_host_price) <= -pass_price:
+                            temp_support_direction = 1
+                        elif (pre_guest_price - normal_guest_price) <= -pass_price:
+                            temp_support_direction = -1
+                        # 只保存倾向性的support，不保存0
+                        if temp_support_direction != 0:
+                            handicap_change_support_list.append(temp_support_direction)
+                    # 盘口相等，判断是否一次变水超过一定值
+                    else:
+                        # 判断是否出现连续降水
+                        # 正数为主队连续降水数，负数则为客队连续降水数
+                        if abs(pre_host_price - current_host_price) >= 0.02:
+                            if pre_host_price < current_host_price:
+                                successive_drop += 1
+                            else:
+                                successive_drop -= 1
+                        if pre_host_price < 1.81:
+                            host_change_price = pre_host_price - current_host_price
+                            if host_change_price <= -0.11:
+                                guest_deny = True
+                        if pre_guest_price < 1.81:
+                            guest_change_price = pre_guest_price - current_guest_price
+                            if guest_change_price <= -0.11:
+                                host_deny = True
 
             pre_handicap = current_handicap
             pre_host_price = current_host_price
@@ -348,14 +406,23 @@ class SoccerSpider(scrapy.Spider):
         # 出现特殊赔率提前结束
         if special_price:
             return False
+        # 出现五次连续降水的反方向deny
+        if abs(successive_drop)>=5:
+            if successive_drop > 0:
+                guest_deny = True
+            else:
+                host_deny = True
+
+        # 初盘支持方向
+        begin_support = judge_host_advantage(begin_handicap)
 
         # 判断支持方向
         support_direction = 0
         # 完全一致才能表示支持
         if len(handicap_change_support_list)>0 and abs(sum(handicap_change_support_list)) == len(handicap_change_support_list):
-            if handicap_change_support_list[0] > 0:
+            if handicap_change_support_list[0] > 0 and begin_support >= 0 and not host_deny:
                 support_direction = 1
-            else:
+            elif handicap_change_support_list[0] < 0 and begin_support <= 0 and not guest_deny:
                 support_direction = -1
 
         # 初步评分

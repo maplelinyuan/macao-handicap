@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Macao_Handicap_Analysis"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Macao_Handicap_sinplelificate_Analysis"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "开赛时间"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -134,14 +134,14 @@ class Ui_MainWindow(object):
     #     self.exe_crawl()
     #     # 先连接至分析数据库获取上次所用分析表的时间
     #     db = QtSql.QSqlDatabase().addDatabase("QMYSQL")
-    #     db.setDatabaseName("macao_handicap_analysis")
+    #     db.setDatabaseName("macao_handicap_simplelificate_analysis")
     #     db.setHostName("127.0.0.1")  # set address
     #     db.setUserName("root")  # set user name
     #     db.setPassword("1994")  # set user pwd
     #     if not db.open():
     #         # 打开失败
     #         return db.lastError()
-    #     print("连接至 macao_handicap_analysis success!")
+    #     print("连接至 macao_handicap_simplelificate_analysis success!")
     #     # 创建QsqlQuery对象，用于执行sql语句
     #     query = QtSql.QSqlQuery()
     #     # 查询出刚才更新的表
@@ -173,7 +173,7 @@ class Ui_MainWindow(object):
 
         # 先连接至分析数据库获取上次所用分析表的时间
         db = QtSql.QSqlDatabase().addDatabase("QMYSQL")
-        db.setDatabaseName("macao_handicap_analysis")
+        db.setDatabaseName("macao_handicap_simplelificate_analysis")
         db.setHostName("127.0.0.1")  # set address
         db.setUserName("root")  # set user name
         db.setPassword("1994")  # set user pwd
@@ -181,14 +181,12 @@ class Ui_MainWindow(object):
             # 打开失败
             print('打开数据库失败！')
             return db.lastError()
-        print("连接至 macao_handicap_analysis success!")
+        print("连接至 macao_handicap_simplelificate_analysis success!")
         # 创建QsqlQuery对象，用于执行sql语句
         query = QtSql.QSqlQuery()
-        query.exec('show tables')
-        query.first()
         # 查询出刚才更新的表
-        table_name = query.value(0)
-        query.exec('SELECT * FROM '+table_name)
+        table_name = nowatime
+        query.exec('SELECT * FROM aoke_handicap_simplelificate'+table_name)
         query.next()
         match_info_list = []
         for i in range(query.size()):
