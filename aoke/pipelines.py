@@ -22,7 +22,7 @@ class AokePipeline(object):
         config = {
             'host' : 'localhost',
             'user' : 'root',
-            'password' : '1994',
+            'password' : '19940929',
             'db' : 'macao_handicap_simplelificate_analysis',
             'charset' : 'utf8mb4',
             'cursorclass' : pymysql.cursors.DictCursor

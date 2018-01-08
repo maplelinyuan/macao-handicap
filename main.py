@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
     #     db.setDatabaseName("macao_handicap_simplelificate_analysis")
     #     db.setHostName("127.0.0.1")  # set address
     #     db.setUserName("root")  # set user name
-    #     db.setPassword("1994")  # set user pwd
+    #     db.setPassword("19940929")  # set user pwd
     #     if not db.open():
     #         # 打开失败
     #         return db.lastError()
@@ -176,7 +176,7 @@ class Ui_MainWindow(object):
         db.setDatabaseName("macao_handicap_simplelificate_analysis")
         db.setHostName("127.0.0.1")  # set address
         db.setUserName("root")  # set user name
-        db.setPassword("1994")  # set user pwd
+        db.setPassword("19940929")  # set user pwd
         if not db.open():
             # 打开失败
             print('打开数据库失败！')
